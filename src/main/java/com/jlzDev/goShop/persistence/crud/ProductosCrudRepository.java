@@ -19,4 +19,7 @@ public interface ProductosCrudRepository extends JpaRepository<Productos, Intege
 
     @Query("SELECT p FROM Productos p WHERE p.precioVenta <= :precio AND p.estado = true")
     List<Productos> findByPrecioLessThanEqual(@Param("precio") Double precio);
+
+    @Query("SELECT p FROM Productos p WHERE p.precioVenta >= :precioMenor  AND p.precioVenta <= :precioMayor AND p.estado = true")
+    List<Productos> findByPrecioVentaBetweenAndEstadoTrue(@Param("precioMenor") Double precioMenor, @Param("precioMayor") Double precioMayor);
 }
