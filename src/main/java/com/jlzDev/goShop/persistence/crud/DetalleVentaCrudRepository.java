@@ -11,7 +11,6 @@ import java.util.List;
 
 @Repository
 public interface DetalleVentaCrudRepository extends JpaRepository<DetalleVenta, Integer> {
-    // Métodos personalizados si son necesarios
     List<DetalleVenta> findByVenta(Ventas venta);
     List<DetalleVenta> findByProducto(Productos producto);
 
