@@ -14,7 +14,6 @@ import java.util.Optional;
 
 @Repository
 public interface VentasCrudRepository extends JpaRepository<Ventas, Integer> {
-    // Métodos personalizados si son necesarios
     Optional<Ventas> findByNumeroFactura(String numeroFactura);
     List<Ventas> findByUsuario(Usuarios usuario);
     List<Ventas> findByPuntoVenta(PuntosVenta puntoVenta);
