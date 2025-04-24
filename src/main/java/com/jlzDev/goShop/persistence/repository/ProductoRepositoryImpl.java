@@ -126,6 +126,7 @@ public class ProductoRepositoryImpl implements ProductoRepository {
 
         if (dto.getIdCategoria() != null) {
             Categorias categoria = new Categorias();
+
             categoria.setIdCategoria(dto.getIdCategoria());
             entity.setCategoria(categoria);
         }
