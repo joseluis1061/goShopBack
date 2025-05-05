@@ -14,6 +14,6 @@ public interface DetalleVentaCrudRepository extends JpaRepository<DetalleVentaEn
     List<DetalleVentaEntity> findByVenta(VentasEntity venta);
     List<DetalleVentaEntity> findByProducto(ProductosEntity producto);
 
-    @Query("SELECT SUM(d.cantidad) FROM DetalleVenta d WHERE d.producto.idProducto = :productoId")
+    @Query("SELECT SUM(d.cantidad) FROM DetalleVentaEntity d WHERE d.producto.idProducto = :productoId")
     Integer sumCantidadByProductoId(@Param("productoId") Integer productoId);
 }

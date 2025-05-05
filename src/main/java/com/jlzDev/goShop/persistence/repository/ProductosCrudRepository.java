@@ -17,9 +17,9 @@ public interface ProductosCrudRepository extends JpaRepository<ProductosEntity, 
     List<ProductosEntity> findByCategoria(CategoriasEntity categoria);
     List<ProductosEntity> findByEstadoTrue();
 
-    @Query("SELECT p FROM Productos p WHERE p.precioVenta <= :precio AND p.estado = true")
+    @Query("SELECT p FROM ProductosEntity p WHERE p.precioVenta  <= :precio AND p.estado = true")
     List<ProductosEntity> findByPrecioLessThanEqual(@Param("precio") Double precio);
 
-    @Query("SELECT p FROM Productos p WHERE p.precioVenta >= :precioMenor  AND p.precioVenta <= :precioMayor AND p.estado = true")
+    @Query("SELECT p FROM ProductosEntity p WHERE p.precioVenta  >= :precioMenor  AND p.precioVenta  <= :precioMayor AND p.estado = true")
     List<ProductosEntity> findByPrecioVentaBetweenAndEstadoTrue(@Param("precioMenor") Double precioMenor, @Param("precioMayor") Double precioMayor);
 }

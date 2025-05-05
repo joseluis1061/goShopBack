@@ -16,6 +16,6 @@ public interface InventariosCrudRepository extends JpaRepository<InventariosEnti
     List<InventariosEntity> findByProducto(ProductosEntity producto);
     Optional<InventariosEntity> findByProductoAndBodega(ProductosEntity producto, BodegasEntity bodega);
 
-    @Query("SELECT i FROM Inventarios i WHERE i.stock < i.stockMinimo")
+    @Query("SELECT i FROM InventariosEntity i WHERE i.stock < i.stockMinimo")
     List<InventariosEntity> findWithStockBelowMinimum();
 }

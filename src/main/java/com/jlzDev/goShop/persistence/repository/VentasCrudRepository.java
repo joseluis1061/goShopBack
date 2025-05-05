@@ -20,9 +20,9 @@ public interface VentasCrudRepository extends JpaRepository<VentasEntity, Intege
     List<VentasEntity> findByEstado(EstadoVentaEnum estado);
     List<VentasEntity> findByFechaBetween(LocalDateTime fechaInicio, LocalDateTime fechaFin);
 
-    @Query("SELECT SUM(v.total) FROM Ventas v WHERE v.fecha BETWEEN :fechaInicio AND :fechaFin AND v.estado = 'PAGADA'")
+    @Query("SELECT SUM(v.total) FROM VentasEntity v WHERE v.fecha BETWEEN :fechaInicio AND :fechaFin AND v.estado = 'PAGADA'")
     Double sumTotalByFechaBetweenAndEstadoPagada(@Param("fechaInicio") LocalDateTime fechaInicio, @Param("fechaFin") LocalDateTime fechaFin);
 
-    @Query("SELECT SUM(v.total) FROM Ventas v WHERE v.fecha BETWEEN :fechaInicio AND :fechaFin")
+    @Query("SELECT SUM(v.total) FROM VentasEntity v WHERE v.fecha BETWEEN :fechaInicio AND :fechaFin")
     Double sumTotalByFechaBetween(@Param("fechaInicio") LocalDateTime fechaInicio, @Param("fechaFin") LocalDateTime fechaFin);
 }

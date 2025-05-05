@@ -14,6 +14,6 @@ public interface DetalleMovimientoCrudRepository extends JpaRepository<DetalleMo
     List<DetalleMovimientoEntity> findByMovimientoInventario(MovimientosInventarioEntity movimientoInventario);
     List<DetalleMovimientoEntity> findByProducto(ProductosEntity producto);
 
-    @Query("SELECT SUM(d.cantidad) FROM DetalleMovimiento d WHERE d.producto.idProducto = :productoId AND d.movimientoInventario.estado = 'COMPLETADO'")
+    @Query("SELECT SUM(d.cantidad) FROM DetalleMovimientoEntity d WHERE d.producto.idProducto = :productoId AND d.movimientoInventario.estado = 'COMPLETADO'")
     Integer sumCantidadByProductoIdAndMovimientoCompletado(@Param("productoId") Integer productoId);
 }
