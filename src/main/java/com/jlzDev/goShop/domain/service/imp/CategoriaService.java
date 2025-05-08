@@ -2,23 +2,26 @@ package com.jlzDev.goShop.domain.service.imp;
 
 import com.jlzDev.goShop.domain.dto.CategoriaDTO;
 import com.jlzDev.goShop.domain.repository.CategoriaRepository;
+import com.jlzDev.goShop.persistence.mapper.CategoriasMapper;
 import com.jlzDev.goShop.persistence.repository.CategoriasCrudRepository;
 import com.jlzDev.goShop.persistence.entity.CategoriasEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Repository
-public class CategoriaRepositoryImpl implements CategoriaRepository {
+@Service
+public class CategoriaService implements CategoriaRepository {
 
     private final CategoriasCrudRepository categoriasCrudRepository;
+    private final CategoriasMapper categoriasMapper;
 
     @Autowired
-    public CategoriaRepositoryImpl(CategoriasCrudRepository categoriasCrudRepository) {
+    public CategoriaService(CategoriasCrudRepository categoriasCrudRepository, CategoriasMapper categoriasMapper) {
         this.categoriasCrudRepository = categoriasCrudRepository;
+        this.categoriasMapper = categoriasMapper;
     }
 
     @Override

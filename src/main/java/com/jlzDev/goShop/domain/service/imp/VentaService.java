@@ -1,4 +1,4 @@
 package com.jlzDev.goShop.domain.service.imp;
 
-public class VentaRepositoryImpl {
+public class VentaService {
 }

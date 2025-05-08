@@ -4,7 +4,9 @@ import com.jlzDev.goShop.persistence.entity.RolesEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface RolesCrudRepository extends JpaRepository<RolesEntity, Integer> {
-    RolesEntity findByNombre(String nombre);
+    Optional<RolesEntity> findByNombre(String nombre);
 }

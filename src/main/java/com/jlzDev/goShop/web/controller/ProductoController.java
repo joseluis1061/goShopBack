@@ -1,7 +1,7 @@
 package com.jlzDev.goShop.web.controller;
 
 import com.jlzDev.goShop.domain.dto.ProductoDTO;
-import com.jlzDev.goShop.domain.service.ProductoService;
+import com.jlzDev.goShop.domain.service.imp.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,12 @@ import java.util.List;
 @RequestMapping("/productos")
 public class ProductoController {
 
-    private final ProductoService productoService;
+
+}
+
+/*
+
+private final ProductoService productoService;
 
     @Autowired
     public ProductoController(ProductoService productoService) {
@@ -83,4 +88,4 @@ public class ProductoController {
                 ? ResponseEntity.ok().build()
                 : ResponseEntity.notFound().build();
     }
-}
+ */

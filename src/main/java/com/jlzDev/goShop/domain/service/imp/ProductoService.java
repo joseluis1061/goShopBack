@@ -1,4 +1,4 @@
-package com.jlzDev.goShop.domain.service;
+package com.jlzDev.goShop.domain.service.imp;
 
 import com.jlzDev.goShop.domain.dto.ProductoDTO;
 import com.jlzDev.goShop.domain.repository.ProductoRepository;
@@ -12,8 +12,62 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class ProductoService {
-    private final ProductoRepository productoRepository;
+public class ProductoService implements ProductoRepository {
+
+    @Override
+    public List<Object> getAll() {
+        return List.of();
+    }
+
+    @Override
+    public List<Object> getAllActive() {
+        return List.of();
+    }
+
+    @Override
+    public Optional<Object> getProducto(int productoId) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Object> getProductoByCodigo(String codigo) {
+        return Optional.empty();
+    }
+
+    @Override
+    public List<Object> getByCategoria(int categoriaId) {
+        return List.of();
+    }
+
+    @Override
+    public List<Object> getByNombre(String nombre) {
+        return List.of();
+    }
+
+    @Override
+    public List<Object> getByPrecioMenorIgual(double precio) {
+        return List.of();
+    }
+
+    @Override
+    public List<Object> getByRangoPrecio(double precioMinimo, double precioMaximo) {
+        return List.of();
+    }
+
+    @Override
+    public Object save(Object producto) {
+        return null;
+    }
+
+    @Override
+    public boolean delete(int productoId) {
+        return false;
+    }
+}
+
+/*
+
+ private final ProductoRepository productoRepository;
     private final CategoriaRepository categoriaRepository;
 
     @Autowired
@@ -105,4 +159,4 @@ public class ProductoService {
                 })
                 .orElse(false);
     }
-}
+ */
