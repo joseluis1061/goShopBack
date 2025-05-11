@@ -73,10 +73,11 @@ public class RolesService implements RolesRepository {
 
     @Override
     @Transactional
-    public Optional<Roles> update(String codigoDocumento, Roles rol) {
-        log.info("Guardando nuevo documento: {}", rol);
-        if (codigoDocumento == null) {
-            throw new IllegalArgumentException("El código del rol no puede ser nulo");
+    public Optional<Roles> update(int rolId, Roles rol) {
+        log.info("Actualizando rol con ID: {}", rolId);
+
+        if (rolId <= 0) {
+            throw new IllegalArgumentException("El id del rol no puede ser 0 o negativo");
         }
 
         if (rol == null) {
@@ -87,11 +88,21 @@ public class RolesService implements RolesRepository {
             throw new IllegalArgumentException("El nombre del rol no puede ser nulo o vacío");
         }
 
-        RolesEntity entity = rolesMapper.toRolEntity(rol);
-        RolesEntity entitySave = rolesCrudRepository.save(entity);
-        log.info("Role guardado con exito: {}", entitySave);
+        // Verificar si el rol existe
+        if (!existsById(rolId)) {
+            log.warn("No se encontró rol con ID: {}", rolId);
+            return Optional.empty();
+        }
 
-        return Optional.of(rolesMapper.toRol(entitySave));
+        // Asegurar que el ID esté asignado en el objeto
+        rol.setIdRol(rolId);
+
+        // Convertir a entidad y guardar
+        RolesEntity entity = rolesMapper.toRolEntity(rol);
+        RolesEntity savedEntity = rolesCrudRepository.save(entity);
+
+        log.info("Rol actualizado con éxito: {}", savedEntity);
+        return Optional.of(rolesMapper.toRol(savedEntity));
     }
 
     @Override

@@ -4,11 +4,15 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
 @Entity
 @Table(name="roles")
+@Getter
+@Setter
+@NoArgsConstructor
 public class RolesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

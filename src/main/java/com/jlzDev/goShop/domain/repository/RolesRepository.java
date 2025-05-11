@@ -37,11 +37,12 @@ public interface RolesRepository {
     Roles save(Roles rol);
 
     /**
-     * Guarda o actualiza un rol.
-     * @param rol Rol a guardar o actualizar.
-     * @return Rol guardado con su ID asignado.
+     * Actualiza un rol existente
+     * @param rolId ID del rol a actualizar
+     * @param rol Datos actualizados del rol
+     * @return Optional que contiene el rol actualizado si existe
      */
-    Optional<Roles> update(String codigoDocumento, Roles rol);
+    Optional<Roles> update(int rolId, Roles rol);
 
     /**
      * Elimina un rol por su ID.

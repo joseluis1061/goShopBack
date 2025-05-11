@@ -118,7 +118,7 @@ public class RolesController {
         rolUpdate.setUpdatedAt(LocalDateTime.now());
 
         // Actualizar y devolver la respuesta
-        return rolRepositoryImp.update(String.valueOf(rolId), rolUpdate)
+        return rolRepositoryImp.update(rolId, rolUpdate)
                 .map(rolesDTOMapper::toRolDTO)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
