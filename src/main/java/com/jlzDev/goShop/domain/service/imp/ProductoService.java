@@ -1,6 +1,5 @@
 package com.jlzDev.goShop.domain.service.imp;
 
-import com.jlzDev.goShop.domain.dto.ProductoDTO;
 import com.jlzDev.goShop.domain.repository.ProductoRepository;
 import com.jlzDev.goShop.domain.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;

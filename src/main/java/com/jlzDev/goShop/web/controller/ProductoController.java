@@ -1,6 +1,5 @@
 package com.jlzDev.goShop.web.controller;
 
-import com.jlzDev.goShop.domain.dto.ProductoDTO;
 import com.jlzDev.goShop.domain.service.imp.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

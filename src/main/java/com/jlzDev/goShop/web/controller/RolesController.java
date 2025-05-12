@@ -28,12 +28,12 @@ import java.util.Map;
 //@RequiredArgsConstructor
 @Slf4j
 public class RolesController {
-    private final RolesService rolRepositoryImp;
+    private final RolesService rolesService;
     private final RolesDTOMapper rolesDTOMapper;
 
     @Autowired
-    public RolesController(RolesService rolRepositoryImp, RolesDTOMapper rolesDTOMapper){
-        this.rolRepositoryImp = rolRepositoryImp;
+    public RolesController(RolesService rolesService, RolesDTOMapper rolesDTOMapper){
+        this.rolesService = rolesService;
         this.rolesDTOMapper = rolesDTOMapper;
     }
 
@@ -42,8 +42,8 @@ public class RolesController {
      * @return Lista de roles.
      */
     @GetMapping
-    public ResponseEntity<List<RolesDTO>> getAllSucursales() {
-        List<Roles> roles = rolRepositoryImp.getAll();
+    public ResponseEntity<List<RolesDTO>> getAllRoles() {
+        List<Roles> roles = rolesService.getAll();
         List<RolesDTO> rolesDTOs = rolesDTOMapper.toRolesDTO(roles);
         return ResponseEntity.ok(rolesDTOs);
     }
@@ -58,12 +58,17 @@ public class RolesController {
             @Parameter(description = "Código rol", required = true)
             @PathVariable String rolId ){
         log.info("REST request para obtener rol {}", rolId);
-        return rolRepositoryImp.getRol(Integer.parseInt(rolId))
+        return rolesService.getRol(Integer.parseInt(rolId))
                 .map(rolesDTOMapper::toRolDTO)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    /**
+     * Crea un role por su rolId
+     * @param rolCreate Role a crear
+     * @return El nuevo role
+     */
     @PostMapping
     public ResponseEntity<RolesDTO> createRol(
             @Parameter(description = "Datos del rol a crear", required = true)
@@ -76,7 +81,7 @@ public class RolesController {
         rol.setCreatedAt(LocalDateTime.now());
         rol.setUpdatedAt(LocalDateTime.now());
 
-        Roles rolCreado = rolRepositoryImp.save(rol);
+        Roles rolCreado = rolesService.save(rol);
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(rolesDTOMapper.toRolDTO(rolCreado));
@@ -98,13 +103,13 @@ public class RolesController {
         }
 
         // Verificar si el rol existe
-        if (!rolRepositoryImp.existsById(rolId)) {
+        if (!rolesService.existsById(rolId)) {
             log.warn("No existe un rol con ID: {}", rolId);
             return ResponseEntity.notFound().build();
         }
 
         // Obtener el rol actual para preservar datos que no deben actualizarse
-        Roles rolExistente = rolRepositoryImp.getRol(rolId).orElse(null);
+        Roles rolExistente = rolesService.getRol(rolId).orElse(null);
         if (rolExistente == null) {
             log.warn("No se pudo obtener el rol con ID: {}", rolId);
             return ResponseEntity.notFound().build();
@@ -118,7 +123,7 @@ public class RolesController {
         rolUpdate.setUpdatedAt(LocalDateTime.now());
 
         // Actualizar y devolver la respuesta
-        return rolRepositoryImp.update(rolId, rolUpdate)
+        return rolesService.update(rolId, rolUpdate)
                 .map(rolesDTOMapper::toRolDTO)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -132,13 +137,13 @@ public class RolesController {
         log.info("REST request para eliminar un rol con ID: {}", rolId);
 
         // Verificar si el rol existe antes de intentar eliminarlo
-        if (!rolRepositoryImp.existsById(rolId)) {
+        if (!rolesService.existsById(rolId)) {
             log.warn("No se encontró ningún rol con ID: {}", rolId);
             return ResponseEntity.notFound().build();
         }
 
         try {
-            boolean eliminado = rolRepositoryImp.delete(rolId);
+            boolean eliminado = rolesService.delete(rolId);
             if (eliminado) {
                 log.info("Rol con ID: {} eliminado exitosamente", rolId);
                 return ResponseEntity.noContent().build();

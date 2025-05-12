@@ -1,5 +1,8 @@
 package com.jlzDev.goShop.domain.repository;
 
+import com.jlzDev.goShop.domain.model.Categorias;
+import com.jlzDev.goShop.domain.model.Roles;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -11,34 +14,42 @@ public interface CategoriaRepository {
      * Obtiene todas las categorías.
      * @return Lista de categorías.
      */
-    List<Object> getAll();
+    List<Categorias> getAll();
 
     /**
      * Obtiene todas las categorías activas.
      * @return Lista de categorías activas.
      */
-    List<Object> getAllActive();
+    List<Categorias> getAllActive();
 
     /**
      * Busca una categoría por su ID.
      * @param categoriaId ID de la categoría a buscar.
      * @return Optional que contiene la categoría si existe.
      */
-    Optional<Object> getCategoria(int categoriaId);
+    Optional<Categorias> getCategoria(int categoriaId);
 
     /**
      * Busca una categoría por su nombre.
      * @param nombre Nombre de la categoría.
      * @return Optional que contiene la categoría si existe.
      */
-    Optional<Object> getByNombre(String nombre);
+    Optional<Categorias> getByNombre(String nombre);
 
     /**
      * Guarda o actualiza una categoría.
      * @param categoria Categoría a guardar o actualizar.
      * @return Categoría guardada con su ID asignado.
      */
-    Object save(Object categoria);
+    Categorias save(Categorias categoria);
+
+    /**
+     * Actualiza una categoría existente
+     * @param categoriaId ID de categoría a actualizar
+     * @param categoria Datos actualizados de la categoría
+     * @return Optional que contiene el rol actualizado si existe
+     */
+    Optional<Categorias> update(int categoriaId, Categorias categoria);
 
     /**
      * Elimina una categoría por su ID.
@@ -46,4 +57,6 @@ public interface CategoriaRepository {
      * @return true si se eliminó correctamente, false si no.
      */
     boolean delete(int categoriaId);
+
+    boolean existsById(int rolId);
 }

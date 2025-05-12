@@ -27,7 +27,7 @@ public interface RolesDTOMapper {
     @Mapping(target = "updatedAt", ignore = true) // Ignoramos la fecha de actualización
     Roles toRolFromCreateDTO(RolesCreateDTO createRolDTO);
 
-    // Nuevo método para el DTO de actualización
+    // DTO de actualización
     @Mapping(target = "usuarios", ignore = true) // Asumiendo que tienes esta relación
     @Mapping(target = "createdAt", ignore = true) // Se establecerá manualmente
     @Mapping(target = "updatedAt", ignore = true) // Se establecerá manualmente
