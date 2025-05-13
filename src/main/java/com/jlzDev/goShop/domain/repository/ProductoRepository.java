@@ -1,5 +1,7 @@
 package com.jlzDev.goShop.domain.repository;
 
+import com.jlzDev.goShop.domain.model.Productos;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -11,48 +13,48 @@ public interface ProductoRepository {
      * Obtiene todos los productos disponibles.
      * @return Lista de productos.
      */
-    List<Object> getAll();
+    List<Productos> getAll();
 
     /**
      * Obtiene todos los productos activos.
      * @return Lista de productos activos.
      */
-    List<Object> getAllActive();
+    List<Productos> getAllActive();
 
     /**
      * Busca un producto por su ID.
      * @param productoId ID del producto a buscar.
      * @return Optional que contiene el producto si existe.
      */
-    Optional<Object> getProducto(int productoId);
+    Optional<Productos> getProducto(int productoId);
 
     /**
      * Busca un producto por su código.
      * @param codigo Código único del producto.
      * @return Optional que contiene el producto si existe.
      */
-    Optional<Object> getProductoByCodigo(String codigo);
+    Optional<Productos> getProductoByCodigo(String codigo);
 
     /**
      * Obtiene productos por categoría.
      * @param categoriaId ID de la categoría.
      * @return Lista de productos de la categoría.
      */
-    List<Object> getByCategoria(int categoriaId);
+    List<Productos> getByIdCategoria(int categoriaId);
 
     /**
      * Busca productos que contengan el nombre especificado.
      * @param nombre Nombre o parte del nombre a buscar.
      * @return Lista de productos que coinciden con la búsqueda.
      */
-    List<Object> getByNombre(String nombre);
+    List<Productos> getByNombre(String nombre);
 
     /**
      * Busca productos con precio menor o igual al especificado.
      * @param precio Precio máximo a buscar.
      * @return Lista de productos con precio menor o igual.
      */
-    List<Object> getByPrecioMenorIgual(double precio);
+    List<Productos> getByPrecioMenorIgual(double precio);
 
     /**
      * Busca productos en un rango de precios.
@@ -60,14 +62,23 @@ public interface ProductoRepository {
      * @param precioMaximo Precio máximo del rango.
      * @return Lista de productos dentro del rango de precios.
      */
-    List<Object> getByRangoPrecio(double precioMinimo, double precioMaximo);
+    List<Productos> getByRangoPrecio(double precioMinimo, double precioMaximo);
 
     /**
      * Guarda o actualiza un producto.
+     * @param producto Producto a guardar.
+     * @return Producto guardado con su ID asignado.
+     */
+    Productos save(Productos producto);
+
+    /**
+     * Guarda o actualiza un producto.
+     * @param productoId Id producto actualizar.
      * @param producto Producto a guardar o actualizar.
      * @return Producto guardado con su ID asignado.
      */
-    Object save(Object producto);
+    Optional<Productos> update(Integer productoId, Productos producto);
+
 
     /**
      * Elimina un producto por su ID.
@@ -75,4 +86,6 @@ public interface ProductoRepository {
      * @return true si se eliminó correctamente, false si no.
      */
     boolean delete(int productoId);
+
+    boolean existsById(int productoId);
 }

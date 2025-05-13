@@ -20,5 +20,5 @@ public class Categorias {
     private Boolean estado;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private List<Productos> productos;
+    //private List<Productos> productos;
 }

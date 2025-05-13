@@ -99,10 +99,10 @@ public class RolesService implements RolesRepository {
 
         // Convertir a entidad y guardar
         RolesEntity entity = rolesMapper.toRolEntity(rol);
-        RolesEntity savedEntity = rolesCrudRepository.save(entity);
+        RolesEntity entityUpdate = rolesCrudRepository.save(entity);
 
-        log.info("Rol actualizado con éxito: {}", savedEntity);
-        return Optional.of(rolesMapper.toRol(savedEntity));
+        log.info("Rol actualizado con éxito: {}", entityUpdate);
+        return Optional.of(rolesMapper.toRol(entityUpdate));
     }
 
     @Override

@@ -34,6 +34,6 @@ public class CategoriasEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy="categoria")
-    private List<ProductosEntity> productos;
+    //@OneToMany(mappedBy="categoria")
+    //private List<ProductosEntity> productos;
 }

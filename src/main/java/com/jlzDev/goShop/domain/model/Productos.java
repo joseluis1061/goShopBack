@@ -18,7 +18,7 @@ public class Productos {
     private Boolean estado;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    //private CategoriasEntity categoria;
+    private Categorias categoria;
     //private List<Inventarios> inventarios;
     //private List<InventariosPV> inventariosPV;
     //private List<DetalleVenta> detallesVenta;
