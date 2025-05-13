@@ -26,5 +26,5 @@ public class ProductosCreateDTO {
     @NotNull
     private Boolean estado;
     @NotNull
-    private CategoriasEntity categoria;
+    private Integer idCategoria; // Solo necesitamos el ID
 }

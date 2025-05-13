@@ -1,6 +1,7 @@
 package com.jlzDev.goShop.web.dto.productos;
 
 import com.jlzDev.goShop.persistence.entity.CategoriasEntity;
+import com.jlzDev.goShop.web.dto.categorias.CategoriaSimpleDTO;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -20,5 +21,5 @@ public class ProductosDTO {
     private Boolean estado;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private CategoriasEntity categoria;
+    private CategoriaSimpleDTO categoria;
 }

@@ -16,6 +16,7 @@ import java.util.List;
 public interface RolesDTOMapper {
     // Domain to DTO
     RolesDTO toRolDTO(Roles rol);
+
     List<RolesDTO> toRolesDTO(List<Roles> roles);
 
     // DTO to Domain
